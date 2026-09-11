@@ -5,14 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-  "dev": "node --watch src/index.js",
-  "start": "node src/index.js"
+    "dev": "node --env-file=.env --watch index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inatbalthazar/jsd-backend-assessment.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -21,6 +20,7 @@
   "homepage": "https://github.com/inatbalthazar/jsd-backend-assessment#readme",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
     "express": "^5.2.1"
   }
 }

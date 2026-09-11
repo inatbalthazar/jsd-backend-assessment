@@ -66,9 +66,9 @@ The list on screen should update after each of these actions **without a manual 
 
 ### Core Backend (everyone)
 
-- [ ] Express server created and listening on a port
-- [ ] `node --watch` used to run the server (no need for nodemon)
-- [ ] `express.json()` middleware applied
+- [✅] Express server created and listening on a port
+- [✅] `node --watch` used to run the server (no need for nodemon)
+- [✅] `express.json()` middleware applied
 - [ ] CORS enabled so a React app running on a different port can call the API (e.g. the `cors` package)
 - [ ] All five routes implemented (GET all, GET one, POST, PUT/PATCH, DELETE)
 - [ ] Route parameters used to identify a product (`/products/:id`)

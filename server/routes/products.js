@@ -1,8 +1,7 @@
 import { Router } from "express";
+import products from "../models/Product.js";
 
-let products = require("../models/Product.js");
-
-const router = Router();
+export const router = Router();
 
 // endpoint products
 router.get("/", (req, res, next) => {
@@ -19,6 +18,23 @@ router.get("/", (req, res, next) => {
         }
 
         res.json(result);
+    } catch (err) {
+        next(err);
+    }
+});
+
+// get one product
+router.get("/:id", (req, res, next) => {
+    try {
+        const product = products.find(prod => prod.id === req.params.id);
+
+        if(!product){
+            return res
+                    .status(404)
+                    .json({error: "Product not found"});
+        }
+
+        res.json(product);
     } catch (err) {
         next(err);
     }
@@ -51,6 +67,48 @@ router.post("/", (req, res, next) => {
         products.push(newProduct);
         res.status(201).json(newProduct);
         
+    } catch (err) {
+        next(err);
+    }
+});
+
+// update product
+router.put("/:id", (req, res, next) => {
+    try {
+        const product = products.find(prod => prod.id === req.params.id);
+
+        if(!product){
+            return res
+                    .status(404)
+                    .json({error: "Product not found"});
+        }
+
+        const {name, price, quantity} = req.body;
+        // validate กันส่งค่า 0
+        if(name) product.name = name;
+        if(price !== undefined) product.price = Number(price);
+        if(quantity !== undefined) product.quantity = Number(quantity);
+
+        res.status(200).json(product);
+    } catch (err) {
+        next(err);
+    }
+});
+
+// del product
+router.delete("/:id", (req, res, next) => {
+    try {
+        const index = products.findIndex(prod => prod.id === req.params.id);
+        
+        if (index === -1) {
+            return res
+                    .status(404)
+                    .json({error: "Product not found"});
+        };
+
+        products.splice(index, 1);
+
+        res.json({message: "Deleted Product"});
     } catch (err) {
         next(err);
     }

@@ -6,8 +6,24 @@ POST {{baseUrl}}/
 ### Get all products
 GET {{baseUrl}}/products
 
+### search product by name
+GET {{baseUrl}}/products?name=keyboard
+
+### sort by price
+GET {{baseUrl}}/products?sortBy=price
+
 ### Add a product
 POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "Mouse-{{$randomInt 00 99}}",
+  "price": 49.99,
+  "quantity": {{$randomInt 000 100}}
+}
+
+### Update product
+PUT {{baseUrl}}/products/1
 Content-Type: application/json
 
 {
@@ -15,3 +31,10 @@ Content-Type: application/json
   "price": 49.99,
   "quantity": 1
 }
+
+### Delete product by id
+DELETE {{baseUrl}}/products/1
+
+
+
+

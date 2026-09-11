@@ -1,8 +1,12 @@
 import express from "express";
+import cors from "cors";
+import { router as productRouter } from "./routes/products.js";
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
+app.use("/products", productRouter)
 
 // custom middleware logger
 app.use((req, res, next) => {
@@ -14,6 +18,7 @@ app.use((req, res, next) => {
     next();
 });
 
+// api status
 app.get("/", (req, res) => {
     res.send("Product API is running!")
 });
