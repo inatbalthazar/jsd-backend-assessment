@@ -1,110 +1,110 @@
-# Fullstack Integration Assessment Brief
+# Fullstack Integration Assessment Brief (ภาษาไทย)
 
-## The Task
+## โจทย์ของงาน (The Task)
 
-Build a REST API for a shopping cart using **Express.js**, and a **React** app that talks to it.
+สร้าง REST API สำหรับ shopping cart โดยใช้ **Express.js** และสร้างแอป **React** ที่คุยกับ API นี้
 
-Your API will manage a list of `products`. Your React app will let a user view, add, edit, and delete those products through the browser — by calling your API, not by faking the data locally.
+API ของคุณจะจัดการ list ของ `products` ส่วนแอป React จะให้ผู้ใช้ดู เพิ่ม แก้ไข และลบ products เหล่านั้นผ่านหน้าเว็บ — โดยการเรียก API ของคุณจริง ๆ ไม่ใช่การ fake ข้อมูลไว้ใน frontend เฉย ๆ
 
-By the end of the assessment you should have a working Express server and a working React app running side by side on your machine, and you should be able to explain how and why data moves between them.
+เมื่อทำ assessment นี้เสร็จ คุณควรมี Express server และแอป React ที่รันคู่กันได้บนเครื่องของคุณ และคุณควรอธิบายได้ว่าข้อมูลเดินทางไปมาระหว่างสองฝั่งนี้อย่างไรและทำไมถึงทำงานแบบนั้น
 
-This assessment runs **entirely locally**. There is no deployment step — you do not need to host your API or your React app anywhere. Everything is demonstrated by running both apps on `localhost`.
-
----
-
-## A Note on AI Tools
-
-You are free to use AI tools (ChatGPT, Claude, Copilot, etc.). This is not a memory test.
-
-What the assessment measures is your **understanding**. You need to be able to explain your code and reason about it in `my-understanding.md`. If you use AI to generate something you do not understand, it will show in your written answers.
-
-The best approach: use AI as a learning tool, not a shortcut. Ask it to explain things, not just produce them.
-
-**You will also rate your own AI use.** At the top of `my-understanding.md` you'll find the **AI Code Contribution Scale** (0–5, from "no AI use" to "AI generated the code with limited understanding"). Pick the number that honestly describes how you worked — the number itself is not scored, so there's no benefit to under- or over-stating it. What is assessed is whether your rating is honest and consistent with your code and answers, and whether whatever AI use you did have was directed and verified rather than just accepted. If you select 2 or higher on the scale, you'll also answer a short set of process questions about how you used AI — see `my-understanding.md`.
+Assessment นี้ทำงานแบบ **local ทั้งหมด** ไม่มีขั้นตอน deployment คุณไม่จำเป็นต้อง host ทั้ง API และแอป React ไว้ที่ไหนเลย ทุกอย่างจะถูก demo โดยการรันทั้งสองแอปบน `localhost`
 
 ---
 
-## What You Are Building
+## หมายเหตุเกี่ยวกับ AI Tools
 
-### 1. An Express API (`server/`)
+คุณสามารถใช้ AI tools ได้อย่างอิสระ (ChatGPT, Claude, Copilot ฯลฯ) นี่ไม่ใช่ memory test
 
-| Method | Route | Description |
+สิ่งที่ assessment นี้วัดคือ **ความเข้าใจ** ของคุณ คุณต้องอธิบายโค้ดของตัวเองได้ และให้เหตุผลได้ผ่านคำตอบที่เขียนไว้ใน `my-understanding.md` ถ้าคุณใช้ AI สร้างอะไรบางอย่างที่คุณไม่เข้าใจ มันจะเห็นได้ชัดจากคำตอบที่คุณเขียน
+
+วิธีที่ดีที่สุดคือ ใช้ AI เป็นเครื่องมือช่วยเรียนรู้ ไม่ใช่ shortcut ลองให้ AI ช่วยอธิบายสิ่งต่าง ๆ แทนที่จะให้มันสร้างโค้ดให้เฉย ๆ
+
+**คุณจะต้อง rate การใช้ AI ของตัวเองด้วย** ที่ด้านบนของ `my-understanding.md` จะมี **AI Code Contribution Scale** (0–5 ตั้งแต่ "ไม่ได้ใช้ AI เลย" ไปจนถึง "AI สร้างโค้ดให้ แต่เข้าใจอย่างจำกัด") เลือกตัวเลขที่ตรงกับสิ่งที่คุณทำจริง ๆ อย่างตรงไปตรงมา — ตัวเลขที่เลือกไม่ถูกให้คะแนนโดยตรง ดังนั้นไม่มีประโยชน์ที่จะพูดน้อยกว่าหรือมากกว่าความจริง สิ่งที่ถูกประเมินคือ rating ของคุณตรงกับความจริงและสอดคล้องกับโค้ด/คำตอบของคุณหรือไม่ และไม่ว่าคุณจะใช้ AI มากแค่ไหน คุณ direct และ verify มันอย่างมีเหตุผลหรือแค่รับมาเฉย ๆ ถ้าคุณเลือก 2 ขึ้นไป คุณจะต้องตอบคำถามเพิ่มเติมสั้น ๆ เกี่ยวกับ process การใช้ AI ของคุณด้วย — ดูได้ใน `my-understanding.md`
+
+---
+
+## สิ่งที่คุณกำลังสร้าง (What You Are Building)
+
+### 1. Express API (`server/`)
+
+| Method | Route | คำอธิบาย |
 |---|---|---|
-| GET | `/products` | Return all products |
-| GET | `/products/:id` | Return a single product by ID |
-| POST | `/products` | Add a new product |
-| PUT or PATCH | `/products/:id` | Update an existing product |
-| DELETE | `/products/:id` | Remove a product |
+| GET | `/products` | คืนค่า products ทั้งหมด |
+| GET | `/products/:id` | คืนค่า product เดียวตาม ID |
+| POST | `/products` | เพิ่ม product ใหม่ |
+| PUT or PATCH | `/products/:id` | แก้ไข product ที่มีอยู่แล้ว |
+| DELETE | `/products/:id` | ลบ product |
 
 #### The Product
 
-Each product should have at minimum:
+แต่ละ product ควรมี field อย่างน้อยดังนี้:
 
-| Field | Type | Notes |
+| Field | Type | หมายเหตุ |
 |---|---|---|
-| `id` | string | Generated when a product is created (e.g. `String(Date.now())`) |
-| `name` | string | Required |
-| `price` | number | Required |
-| `quantity` | number | Required, defaults to `1` |
+| `id` | string | ถูกสร้างขึ้นตอนที่ product ถูกสร้าง (เช่น `String(Date.now())`) |
+| `name` | string | จำเป็นต้องมี (Required) |
+| `price` | number | จำเป็นต้องมี (Required) |
+| `quantity` | number | จำเป็นต้องมี (Required), ค่า default คือ `1` |
 
-### 2. A React app (`client/`)
+### 2. แอป React (`client/`)
 
-A React app, built from scratch, that talks to your API over `fetch` (or `axios`) — not a static/hardcoded list. When your server data changes, refreshing the React app should show the new data.
+แอป React ที่สร้างขึ้นเองตั้งแต่ต้น (from scratch) ที่คุยกับ API ของคุณผ่าน `fetch` (หรือ `axios`) — ไม่ใช่ list ที่ hardcode ไว้แบบ static เมื่อข้อมูลบน server เปลี่ยน การ refresh แอป React ควรแสดงข้อมูลใหม่ที่เปลี่ยนไป
 
-At minimum, the app should let a user:
+อย่างน้อยที่สุด แอปควรให้ผู้ใช้ทำสิ่งเหล่านี้ได้:
 
-- See the full list of products (fetched from `GET /products` when the app loads)
-- Add a new product using a form (calls `POST /products`)
-- Edit an existing product (calls `PUT`/`PATCH /products/:id`)
-- Delete a product (calls `DELETE /products/:id`)
+- ดู list ของ products ทั้งหมด (fetch มาจาก `GET /products` ตอนแอป load)
+- เพิ่ม product ใหม่ผ่านฟอร์ม (เรียก `POST /products`)
+- แก้ไข product ที่มีอยู่ (เรียก `PUT`/`PATCH /products/:id`)
+- ลบ product (เรียก `DELETE /products/:id`)
 
-The list on screen should update after each of these actions **without a manual page refresh** — i.e. your component state is kept in sync with what the API just did.
+list ที่แสดงบนหน้าจอควรอัปเดตหลังจากแต่ละ action เหล่านี้ **โดยไม่ต้อง refresh หน้าเว็บเอง** — พูดอีกแบบคือ component state ของคุณต้อง sync กับสิ่งที่ API เพิ่งทำไป
 
 ---
 
 ## Requirements
 
-### Core Backend (everyone)
+### Core Backend (ทุกคนต้องทำ)
 
-- [✅] Express server created and listening on a port
-- [✅] `node --watch` used to run the server (no need for nodemon)
-- [✅] `express.json()` middleware applied
-- [ ] CORS enabled so a React app running on a different port can call the API (e.g. the `cors` package)
-- [ ] All five routes implemented (GET all, GET one, POST, PUT/PATCH, DELETE)
-- [ ] Route parameters used to identify a product (`/products/:id`)
-- [ ] At least one query string supported (e.g. filter by name or sort by price)
-- [ ] Products stored in an in-memory array (no database required)
-- [ ] Correct HTTP status codes returned (200, 201, 400, 404)
-- [ ] At least one custom middleware written (e.g. a request logger)
-- [ ] Error handling middleware included at the end of the middleware chain
-- [ ] Meaningful error messages returned when something goes wrong
+- [ ] สร้าง Express server และ listen บน port
+- [ ] ใช้ `node --watch` ในการรัน server (ไม่จำเป็นต้องใช้ nodemon)
+- [ ] ใช้ middleware `express.json()`
+- [ ] เปิดใช้งาน CORS เพื่อให้แอป React ที่รันอยู่คนละ port เรียก API ได้ (เช่น package `cors`)
+- [ ] implement ครบทั้ง 5 routes (GET all, GET one, POST, PUT/PATCH, DELETE)
+- [ ] ใช้ route parameters ในการระบุ product (`/products/:id`)
+- [ ] รองรับ query string อย่างน้อย 1 แบบ (เช่น filter ตามชื่อ หรือ sort ตามราคา)
+- [ ] เก็บ products ไว้ใน in-memory array (ไม่ต้องใช้ database)
+- [ ] คืนค่า HTTP status codes ที่ถูกต้อง (200, 201, 400, 404)
+- [ ] เขียน custom middleware อย่างน้อย 1 ตัว (เช่น request logger)
+- [ ] มี error handling middleware อยู่ท้าย middleware chain
+- [ ] คืน error message ที่มีความหมายเมื่อเกิดข้อผิดพลาด
 
-### Core Frontend (everyone)
+### Core Frontend (ทุกคนต้องทำ)
 
-- [ ] React app created from scratch (Vite recommended: `npm create vite@latest client -- --template react`)
-- [ ] Product list fetched from `GET /products` and rendered on load (e.g. using `useEffect` + `useState`)
-- [ ] A loading state shown while the initial fetch is in progress
-- [ ] An error state shown if the fetch fails (e.g. server not running) — the app should not just break silently
-- [ ] A form to add a new product that calls `POST /products` and updates the on-screen list when it succeeds
-- [ ] A way to edit an existing product that calls `PUT`/`PATCH /products/:id` and updates the on-screen list
-- [ ] A way to delete a product that calls `DELETE /products/:id` and removes it from the on-screen list
-- [ ] The API base URL is stored in one place (e.g. a `.env` file with `VITE_API_URL`), not hardcoded in every fetch call
-- [ ] No page reloads are used to "refresh" data after an action — state is updated in React
+- [ ] สร้างแอป React ขึ้นเองตั้งแต่ต้น (แนะนำ Vite: `npm create vite@latest client -- --template react`)
+- [ ] fetch product list จาก `GET /products` และ render ตอน load (เช่น ใช้ `useEffect` + `useState`)
+- [ ] แสดง loading state ระหว่างที่ fetch ครั้งแรกกำลังทำงานอยู่
+- [ ] แสดง error state ถ้า fetch ล้มเหลว (เช่น server ไม่ได้รันอยู่) — แอปไม่ควร break แบบเงียบ ๆ
+- [ ] มีฟอร์มสำหรับเพิ่ม product ใหม่ที่เรียก `POST /products` และอัปเดต list บนหน้าจอเมื่อสำเร็จ
+- [ ] มีวิธีแก้ไข product ที่มีอยู่ ซึ่งเรียก `PUT`/`PATCH /products/:id` และอัปเดต list บนหน้าจอ
+- [ ] มีวิธีลบ product ที่เรียก `DELETE /products/:id` และเอา product นั้นออกจาก list บนหน้าจอ
+- [ ] เก็บ API base URL ไว้ที่เดียว (เช่นไฟล์ `.env` ที่มี `VITE_API_URL`) ไม่ hardcode ไว้ในทุก fetch call
+- [ ] ไม่ใช้การ reload หน้าเว็บเพื่อ "refresh" ข้อมูลหลังทำ action ใด ๆ — ให้ update state ผ่าน React
 
-### Stretch (if you finish early)
+### Stretch (ถ้าทำเสร็จก่อนเวลา)
 
-- [ ] Connect the API to a **MongoDB Atlas** database and persist products there
-- [ ] Validate incoming request data on the server — reject missing or invalid fields with a 400 response, and surface that error message in the React UI
-- [ ] Move your Express routes into a separate file using `express.Router()`
-- [ ] Add client-side search/sort controls in React that are sent to the API as query strings (ties into the query-string requirement above)
-- [ ] Add a product detail page using React Router (e.g. `/products/:id`)
-- [ ] Add basic optimistic UI updates (update the screen before the API response comes back, then reconcile)
+- [ ] เชื่อมต่อ API กับ database **MongoDB Atlas** และ persist products ไว้ที่นั่น
+- [ ] validate ข้อมูลที่ส่งเข้ามาฝั่ง server — reject field ที่ขาดหรือไม่ถูกต้องด้วย response 400 แล้วแสดง error message นั้นใน React UI
+- [ ] ย้าย Express routes ไปไว้ในไฟล์แยกโดยใช้ `express.Router()`
+- [ ] เพิ่ม search/sort controls ฝั่ง client ใน React ที่ส่งเป็น query strings ไปยัง API (เชื่อมโยงกับ query-string requirement ด้านบน)
+- [ ] เพิ่มหน้า product detail page โดยใช้ React Router (เช่น `/products/:id`)
+- [ ] เพิ่ม optimistic UI updates เบื้องต้น (update หน้าจอก่อนที่ response จาก API จะกลับมา แล้วค่อย reconcile ทีหลัง)
 
 ---
 
 ## Folder Structure
 
-This is a **single GitHub repository** containing both apps side by side. You do not need npm/pnpm/yarn workspaces — just two independent folders, each with their own `package.json`, run in two separate terminals.
+นี่คือ GitHub repository **เดียว** ที่มีทั้งสองแอปอยู่ด้วยกัน คุณไม่จำเป็นต้องใช้ npm/pnpm/yarn workspaces — แค่แยกเป็น 2 folder อิสระจากกัน แต่ละอันมี `package.json` ของตัวเอง และรันคนละ terminal
 
 ### Core
 
@@ -112,7 +112,7 @@ This is a **single GitHub repository** containing both apps side by side. You do
 your-project/
 ├── client/
 │   ├── src/
-│   │   └── ... (your React components)
+│   │   └── ... (React components ของคุณ)
 │   ├── .env
 │   └── package.json
 ├── server/
@@ -144,25 +144,25 @@ your-project/
 
 ## Tooling
 
-**Running your server**
+**การรัน server ของคุณ**
 ```bash
 cd server
 node --watch index.js
 ```
 
-**Running your React app** (in a second terminal)
+**การรันแอป React ของคุณ** (ใน terminal ที่สอง)
 ```bash
 cd client
 npm run dev
 ```
 
-Both need to be running at the same time for the app to work — the server on one port (e.g. `3000`), the React dev server on another (e.g. `5173`). This is exactly why CORS needs to be configured on the server: the browser treats these as two different origins.
+ทั้งสองต้องรันพร้อมกันเพื่อให้แอปทำงานได้ — server อยู่ที่ port หนึ่ง (เช่น `3000`) ส่วน React dev server อยู่ที่อีก port หนึ่ง (เช่น `5173`) นี่คือเหตุผลว่าทำไมต้อง config CORS บน server เพราะ browser มองว่าทั้งสองนี้เป็นคนละ origin กัน
 
-**Testing your API routes directly**
+**การ test API routes ของคุณโดยตรง**
 
-Use the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) VS Code extension to test your routes independently of the frontend, especially while building. Create a file called `requests.http` in `server/` and write your requests there. Postman is also fine if you prefer it.
+ใช้ [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) VS Code extension เพื่อ test routes ของคุณแยกจาก frontend โดยเฉพาะระหว่างที่กำลัง build อยู่ สร้างไฟล์ชื่อ `requests.http` ไว้ใน `server/` แล้วเขียน request ของคุณไว้ที่นั่น หรือใช้ Postman ก็ได้ถ้าถนัดกว่า
 
-Example `requests.http`:
+ตัวอย่าง `requests.http`:
 ```http
 ### Get all products
 GET http://localhost:3000/products
@@ -178,35 +178,35 @@ Content-Type: application/json
 }
 ```
 
-Testing your routes this way first — before wiring them into React — makes it much easier to tell whether a bug is on the server side or the client side.
+การ test routes แบบนี้ก่อน — ก่อนที่จะเชื่อมกับ React — จะทำให้บอกได้ง่ายขึ้นมากว่า bug อยู่ฝั่ง server หรือฝั่ง client
 
 ---
 
 ## Submission
 
-Here is what to prepare and where each piece goes:
+นี่คือสิ่งที่ต้องเตรียมและส่งไปที่ไหนบ้าง:
 
-### 1. GitHub Repository — link goes in the Google Sheet
-Push your project (both `client/` and `server/`) to a single **public** GitHub repository. Paste the link into the shared Google Sheet your instructor has provided.
+### 1. GitHub Repository — ใส่ link ใน Google Sheet
+Push โปรเจกต์ของคุณ (ทั้ง `client/` และ `server/`) ขึ้น GitHub repository เดียวที่เป็น **public** แล้วนำ link ไปวางใน Google Sheet ที่ instructor เตรียมไว้ให้
 
-> The repo must be set to **public** — a private repo cannot be reviewed.
+> repo ต้องตั้งเป็น **public** — repo แบบ private จะ review ไม่ได้
 
-> Make sure `node_modules/` is excluded via `.gitignore` in both `client/` and `server/`.
+> อย่าลืม exclude `node_modules/` ผ่าน `.gitignore` ทั้งใน `client/` และ `server/`
 
-### 2. README.md — lives at the root of your GitHub repo
-A short README explaining how to run your project locally: how to install dependencies and start both the server and the client, and what ports they run on.
+### 2. README.md — อยู่ที่ root ของ GitHub repo
+README สั้น ๆ อธิบายวิธี run โปรเจกต์แบบ local: วิธี install dependencies และ start ทั้ง server และ client รวมถึง port ที่แต่ละฝั่งรันอยู่
 
-### 3. my-understanding.md — lives at the root of your GitHub repo
-Use `MY_UNDERSTANDING_TEMPLATE.md` as your starting point — copy it into your project, rename it `my-understanding.md`, and answer all questions in your own words. This includes rating yourself on the **AI Code Contribution Scale** at the top, and — if you rated 2 or higher — the AI process questions at the end.
+### 3. my-understanding.md — อยู่ที่ root ของ GitHub repo
+ใช้ `MY_UNDERSTANDING_TEMPLATE.md` เป็นจุดเริ่มต้น — copy ไฟล์นั้นเข้าไปในโปรเจกต์ของคุณ เปลี่ยนชื่อเป็น `my-understanding.md` แล้วตอบทุกคำถามด้วยคำพูดของคุณเอง รวมถึง rate ตัวเองบน **AI Code Contribution Scale** ที่ด้านบน และถ้า rate ไว้ 2 ขึ้นไป ให้ตอบ AI process questions ที่ท้ายเอกสารด้วย
 
-Write as if explaining to a friend. Do not copy from documentation or AI output. This is where your understanding is actually assessed, so take it seriously — there is no video to fall back on.
+เขียนเหมือนกำลังอธิบายให้เพื่อนฟัง อย่า copy จาก documentation หรือ AI output ส่วนนี้คือจุดที่ความเข้าใจของคุณจะถูกประเมินจริง ๆ ดังนั้นให้ทำอย่างตั้งใจ — เพราะไม่มีวิดีโอให้พึ่งพาแล้ว
 
 ---
 
 ## Tips
 
-- **Get the server working and tested with REST Client before touching React.** Debugging a fetch call against a server you haven't verified yourself is much harder than debugging a server directly.
-- **Build one full slice at a time.** Get "list products" fully working end to end (server route → fetch → render) before starting "add a product". Don't build all five server routes and then all four React features — alternate between them.
-- **Open your browser's Network tab and Console early and often.** Most frontend-backend bugs (CORS errors, wrong URL, wrong port, unhandled rejected fetch) show up there first.
-- **Complete `my-understanding.md` as you go, not all at once at the end.** Answering "how does your Add Product form talk to your server?" right after you build it is much easier than trying to reconstruct it later.
-- **Your score reflects your understanding, not your seniority.** A clean, well-explained core submission scores better than a rushed stretch goal you cannot explain.
+- **ทำให้ server ทำงานได้และ test ผ่าน REST Client ก่อน แล้วค่อยแตะ React** การ debug fetch call กับ server ที่คุณยังไม่ได้ verify เองนั้นยากกว่าการ debug server โดยตรงมาก
+- **build ทีละ feature ให้ครบวงจร (full slice)** ทำให้ "list products" ทำงานได้ครบวงจร (server route → fetch → render) ก่อนเริ่ม "add a product" อย่า build ทั้ง 5 server routes ก่อนแล้วค่อยไปทำ React ทั้ง 4 features ทีหลัง — ให้สลับทำทั้งสองฝั่งไปพร้อมกัน
+- **เปิด Network tab และ Console ใน browser บ่อย ๆ ตั้งแต่เนิ่น ๆ** bug ระหว่าง frontend-backend ส่วนใหญ่ (CORS errors, URL ผิด, port ผิด, fetch ที่ reject โดยไม่ได้ handle) จะโผล่ให้เห็นที่นี่ก่อน
+- **ทำ `my-understanding.md` ไปพร้อม ๆ กับที่ build ไม่ใช่ทำทีเดียวตอนจบ** การตอบคำถาม "ฟอร์ม Add Product ของคุณคุยกับ server ยังไง" ทันทีหลัง build เสร็จนั้นง่ายกว่าการพยายามนึกย้อนทีหลังมาก
+- **คะแนนของคุณสะท้อนความเข้าใจ ไม่ใช่ความอาวุโส** งาน core ที่ clean และอธิบายได้ดี จะได้คะแนนดีกว่างาน stretch goal ที่รีบทำแต่อธิบายไม่ได้

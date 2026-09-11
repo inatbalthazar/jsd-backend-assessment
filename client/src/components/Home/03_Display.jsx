@@ -3,6 +3,8 @@ import Table from "../Table";
 const Display = ({
   activeSection,
   members,
+  loading,
+  error,
   handleDelete,
   handleCreate,
   handleUpdate,
@@ -11,7 +13,15 @@ const Display = ({
 }) => {
   return (
     <div className="w-full max-w-5xl mt-6 p-8 bg-white rounded-lg border border-[#dadce0]">
-      {!activeSection && (
+      {error && (
+        <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg" role="alert">
+          Error: {error}
+        </div>
+      )}
+      {loading && (
+        <p className="text-center text-sm text-gray-500 py-4">Loading products...</p>
+      )}
+      {!activeSection && !loading && (
         <p className="text-center text-xl text-base text-[#9aa0a6] italic py-8">
           {`Choose a section`}
         </p>

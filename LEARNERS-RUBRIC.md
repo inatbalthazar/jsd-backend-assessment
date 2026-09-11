@@ -1,8 +1,8 @@
-# What You Are Being Assessed On
+# สิ่งที่คุณจะถูกประเมิน (What You Are Being Assessed On)
 
-Your score reflects your understanding of what you built — not just whether it works. Each area below is assessed across your code (`client/` and `server/`) and your written answers in `my-understanding.md`.
+คะแนนของคุณสะท้อนความเข้าใจในสิ่งที่คุณสร้าง — ไม่ใช่แค่ว่ามันทำงานได้หรือไม่ แต่ละหัวข้อด้านล่างจะถูกประเมินจากทั้งโค้ดของคุณ (`client/` และ `server/`) และคำตอบที่เขียนไว้ใน `my-understanding.md`
 
-There is no pass or fail. Your score tells you where your understanding is strong and where to focus next.
+ไม่มีการ pass หรือ fail คะแนนของคุณจะบอกว่าความเข้าใจส่วนไหนแข็งแรง และส่วนไหนควรโฟกัสเพิ่มเติม
 
 ---
 
@@ -11,95 +11,95 @@ There is no pass or fail. Your score tells you where your understanding is stron
 ### Backend
 
 #### 1. Express Server Setup
-- Your server starts correctly and listens on a port
-- `node --watch` is used
-- `express.json()` is applied and you can explain why it is needed
-- CORS is configured and you can explain what it is and why it's needed for your React app to reach your API
+- server ของคุณ start ได้ถูกต้องและ listen บน port
+- ใช้ `node --watch`
+- ใช้ `express.json()` และอธิบายได้ว่าทำไมถึงจำเป็น
+- config CORS ไว้แล้ว และอธิบายได้ว่ามันคืออะไรและทำไมแอป React ของคุณถึงต้องใช้มันในการเข้าถึง API
 
 #### 2. Routing
-- All five routes are implemented: GET all, GET one, POST, PUT/PATCH, DELETE
-- You can explain what each HTTP method means and why we use different methods
+- implement ครบทั้ง 5 routes: GET all, GET one, POST, PUT/PATCH, DELETE
+- อธิบายได้ว่าแต่ละ HTTP method หมายถึงอะไร และทำไมเราถึงใช้ method ต่างกัน
 
 #### 3. Request Handling
-- Your routes correctly use `req.body`, `req.params`, and `req.query`
-- You can explain the difference between all three with examples from your own code
+- routes ของคุณใช้ `req.body`, `req.params`, และ `req.query` ได้ถูกต้อง
+- อธิบายความแตกต่างของทั้งสามอย่างนี้ได้ พร้อมยกตัวอย่างจากโค้ดของคุณเอง
 
 #### 4. Response Quality
-- Your API returns JSON with appropriate HTTP status codes (200, 201, 400, 404)
-- You can explain why status codes matter and why you chose each one
+- API คืนค่าเป็น JSON พร้อม HTTP status codes ที่เหมาะสม (200, 201, 400, 404)
+- อธิบายได้ว่าทำไม status codes ถึงสำคัญ และทำไมถึงเลือกใช้แต่ละตัว
 
 #### 5. CRUD Operations
-- Your in-memory array correctly supports Create, Read, Update, and Delete
-- You can walk through what happens on the server from the moment a request arrives to the moment a response is sent
+- in-memory array ของคุณรองรับ Create, Read, Update, และ Delete ได้อย่างถูกต้อง
+- อธิบายได้ทีละขั้นตอนว่าเกิดอะไรขึ้นบน server ตั้งแต่ request มาถึงจนกระทั่ง response ถูกส่งกลับ
 
 #### 6. Error Handling & Middleware
-- At least one custom middleware is present (e.g. a request logger)
-- Error-handling middleware is in place with a meaningful response
-- You can explain what middleware is, why order matters, and what your error handling does
+- มี custom middleware อย่างน้อย 1 ตัว (เช่น request logger)
+- มี error-handling middleware พร้อม response ที่มีความหมาย
+- อธิบายได้ว่า middleware คืออะไร ทำไม order ถึงสำคัญ และ error handling ของคุณทำอะไรบ้าง
 
 ### Frontend & Integration
 
 #### 7. Fetching & Displaying Data
-- Your React app fetches the product list from your API on load and renders it
-- You can explain what `useEffect` is doing in your data-fetching code and why the fetch isn't just called directly in the component body
+- แอป React ของคุณ fetch product list จาก API ตอน load และ render ออกมา
+- อธิบายได้ว่า `useEffect` ในโค้ด data-fetching ของคุณทำอะไร และทำไมถึงเรียก fetch ตรง ๆ ใน component body ไม่ได้
 
 #### 8. State Management
-- Your component state (`useState`) correctly reflects what's on the server after every create, update, and delete
-- You can explain the difference between "server state" (what's in your Express array) and "UI state" (what React is currently showing), and how you keep them in sync
+- component state (`useState`) ของคุณสะท้อนสิ่งที่อยู่บน server ได้ถูกต้องหลังจากทุก create, update, และ delete
+- อธิบายความแตกต่างระหว่าง "server state" (สิ่งที่อยู่ใน Express array) กับ "UI state" (สิ่งที่ React กำลังแสดงอยู่) และวิธีที่คุณทำให้ทั้งสองอย่าง sync กัน
 
 #### 9. Sending Data to the API
-- Your Add and Edit forms correctly send data to the right route with the right method
-- You can explain, step by step, what happens from a user clicking "Submit" to the screen updating
+- ฟอร์ม Add และ Edit ของคุณส่งข้อมูลไปยัง route และ method ที่ถูกต้อง
+- อธิบายได้ทีละขั้นตอนว่าเกิดอะไรขึ้นตั้งแต่ผู้ใช้คลิก "Submit" จนหน้าจออัปเดต
 
 #### 10. Handling Loading & Errors on the Client
-- A loading state is shown during the initial fetch
-- A failed request (e.g. server not running, or a 400/404 response) is caught and shown to the user rather than crashing or failing silently
-- You can explain what happens in your app if the server is turned off
+- แสดง loading state ระหว่าง fetch ครั้งแรก
+- request ที่ล้มเหลว (เช่น server ไม่ได้รันอยู่ หรือ response 400/404) ถูก catch และแสดงให้ผู้ใช้เห็น แทนที่จะ crash หรือล้มเหลวแบบเงียบ ๆ
+- อธิบายได้ว่าจะเกิดอะไรขึ้นกับแอปของคุณถ้า server ถูกปิด
 
 #### 11. Frontend-Backend Communication
-- You can explain what CORS is, what problem it solves, and what error you'd see in the browser without it
-- You can explain where your API's base URL is defined and why it isn't hardcoded in every fetch call
-- You can explain, in your own words, the full round trip of one action in your app (e.g. deleting a product) from the click in the browser to the array changing on the server and back
+- อธิบายได้ว่า CORS คืออะไร แก้ปัญหาอะไร และถ้าไม่ config ไว้จะเห็น error แบบไหนใน browser
+- อธิบายได้ว่า API base URL ของคุณถูกกำหนดไว้ที่ไหน และทำไมถึงไม่ hardcode ไว้ในทุก fetch call
+- อธิบายได้ด้วยคำพูดของตัวเองว่า action หนึ่งใน app ของคุณ (เช่น การลบ product) เดินทางไปมาอย่างไรตั้งแต่การคลิกใน browser ไปจนถึง array บน server ที่เปลี่ยนแปลง แล้วย้อนกลับมา
 
 ### AI Tool Usage
 
 #### 12. AI Code Contribution
-- You rated yourself honestly on the **AI Code Contribution Scale**, and that rating is consistent with what your code and your other written answers actually show
-- If you rated 2 or higher: you can show how you broke the work into small, directed prompts rather than one large "build the whole thing" request
-- If you rated 2 or higher: you can point to at least one specific thing you changed, corrected, or rejected from AI-generated output, and explain why
-- If you rated 2 or higher: you can describe one real bug or error you hit and how it was actually diagnosed — not just "I pasted the error back into the chat"
+- คุณ rate ตัวเองอย่างตรงไปตรงมาบน **AI Code Contribution Scale** และ rating นั้นสอดคล้องกับสิ่งที่โค้ดและคำตอบอื่น ๆ ของคุณแสดงให้เห็นจริง
+- ถ้า rate ไว้ 2 ขึ้นไป: คุณแสดงให้เห็นได้ว่าแบ่งงานออกเป็น prompt เล็ก ๆ ที่มีทิศทางชัดเจน แทนที่จะขอ AI "สร้างทั้งแอปให้หน่อย" ในครั้งเดียว
+- ถ้า rate ไว้ 2 ขึ้นไป: คุณชี้ได้ว่ามีอะไรอย่างน้อย 1 อย่างที่คุณเปลี่ยน แก้ไข หรือปฏิเสธจาก output ที่ AI สร้างให้ พร้อมเหตุผล
+- ถ้า rate ไว้ 2 ขึ้นไป: คุณอธิบาย bug หรือ error จริง ๆ ที่เจอได้ 1 อย่าง และวิธีที่คุณ diagnose มันจริง ๆ — ไม่ใช่แค่ "copy error ไปถามใน chat"
 
 ---
 
 ## Score Bands
 
-| Score | What it means |
+| Score | ความหมาย |
 |---|---|
-| 85–100 | Strong — confident, well-rounded understanding across both backend and frontend integration |
-| 70–84 | Good — solid grasp with minor gaps worth revisiting |
-| 50–69 | Foundational — core concepts are there; targeted revision recommended |
-| 35–49 | Gaps identified — several areas need reinforcement; a follow-up session will be arranged |
-| Below 35 | Urgent — significant gaps across multiple areas; immediate support will be offered |
+| 85–100 | Strong — เข้าใจแน่น ครบทั้งฝั่ง backend และ frontend integration |
+| 70–84 | Good — เข้าใจพื้นฐานดี มี gap เล็กน้อยที่ควรทบทวน |
+| 50–69 | Foundational — เข้าใจ concept หลักแล้ว แนะนำให้ทบทวนเพิ่มเติมแบบเจาะจง |
+| 35–49 | Gaps identified — มีหลายจุดที่ต้องเสริมความเข้าใจ จะมีการนัด follow-up session |
+| Below 35 | Urgent — มี gap สำคัญในหลายหัวข้อ จะมีการช่วยเหลือทันที |
 
 ---
 
 ## Bonus
 
-Completing any stretch goals (MongoDB Atlas, input validation surfaced in the UI, Router splitting, client-side search/sort, a detail page, optimistic updates) adds bonus marks on top of your core score. They cannot reduce your score.
+การทำ stretch goals (MongoDB Atlas, input validation ที่แสดงผลใน UI, การแยก Router, client-side search/sort, detail page, optimistic updates) จะได้คะแนนโบนัสเพิ่มจากคะแนน core คะแนนโบนัสจะไม่ทำให้คะแนนของคุณลดลง
 
 ---
 
-## A Note on Assessment Method
+## หมายเหตุเกี่ยวกับวิธีการประเมิน (A Note on Assessment Method)
 
-There is no video walkthrough for this assessment. Your understanding is assessed entirely through your code and your written answers in `my-understanding.md`. Answer thoughtfully and in your own words — vague or copied answers are easy to spot and will be treated as a gap in understanding, not a working answer.
+Assessment นี้ไม่มีวิดีโอ walkthrough ความเข้าใจของคุณจะถูกประเมินทั้งหมดผ่านโค้ดและคำตอบที่เขียนไว้ใน `my-understanding.md` ตอบให้ครบถ้วนและใช้คำพูดของตัวเอง — คำตอบที่คลุมเครือหรือ copy มาจะสังเกตเห็นได้ง่าย และจะถูกนับว่าเป็น gap ทางความเข้าใจ ไม่ใช่คำตอบที่ใช้ได้
 
 ---
 
-## A Note on AI Usage & Scoring
+## หมายเหตุเกี่ยวกับการใช้ AI และการให้คะแนน (A Note on AI Usage & Scoring)
 
-Your AI Code Contribution Scale rating is **not** scored on its own — a 0 does not score higher than a 5, and there is no benefit to under- or over-stating how much AI you used. What is assessed is:
+rating บน AI Code Contribution Scale ของคุณ **ไม่ถูกให้คะแนนด้วยตัวมันเอง** — 0 ไม่ได้คะแนนดีกว่า 5 และไม่มีประโยชน์ที่จะพูดน้อยหรือมากกว่าความจริงว่าใช้ AI แค่ไหน สิ่งที่ถูกประเมินจริง ๆ คือ:
 
-1. Whether your rating is **honest and consistent** — if you rate yourself a 0 or 1 but cannot explain basic concepts, or rate yourself a 5 but your written answers show deep, precise understanding, that mismatch is what gets flagged, not the number itself.
-2. Whether, for any rating of 2 or higher, you can demonstrate a **directed and verified process** — you broke the work into steps, tested what was generated, caught and fixed at least one thing, and can explain a bug you actually hit.
+1. rating ของคุณ **ตรงไปตรงมาและสอดคล้องกัน** หรือไม่ — ถ้าคุณ rate ตัวเอง 0 หรือ 1 แต่อธิบาย concept พื้นฐานไม่ได้ หรือ rate ตัวเอง 5 แต่คำตอบที่เขียนไว้แสดงความเข้าใจที่ลึกและแม่นยำมาก สิ่งที่จะถูก flag คือความไม่สอดคล้องนี้ ไม่ใช่ตัวเลขที่เลือก
+2. ไม่ว่า rating จะเป็น 2 ขึ้นไปหรือไม่ คุณแสดง **process ที่มีทิศทางและมีการ verify** ได้หรือเปล่า — แบ่งงานเป็นขั้นตอน ทดสอบสิ่งที่ AI สร้างให้ จับและแก้ไขอย่างน้อย 1 อย่าง และอธิบาย bug จริงที่เคยเจอได้
 
-A learner who honestly rates themselves a 5 and clearly shows good process control can score just as well as a learner who wrote everything by hand and rates themselves a 0. A learner who claims a 0 but whose code and answers suggest otherwise will score worse than if they had simply been honest.
+learner ที่ rate ตัวเอง 5 อย่างตรงไปตรงมา และแสดง process ที่ควบคุมได้ดี จะได้คะแนนดีพอ ๆ กับ learner ที่เขียนเองทั้งหมดและ rate ตัวเอง 0 ส่วน learner ที่บอกว่า 0 แต่โค้ดกับคำตอบบ่งชี้เป็นอย่างอื่น จะได้คะแนนแย่กว่าถ้าเขาแค่พูดความจริงตั้งแต่แรก

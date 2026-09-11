@@ -4,9 +4,13 @@ import Header from "../components/Home/01_Header";
 import NavButtons from "../components/Home/02_NavButtons";
 import Display from "../components/Home/03_Display";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+
 const Home = () => {
   const [activeSection, setActiveSection] = useState("");
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -15,17 +19,19 @@ const Home = () => {
 
   const fetchData = async () => {
     try {
-      const res = await fetch(
-        "http://localhost:3000/products",
-      );
+      setLoading(true);
+      setError(null);
+      const res = await fetch(`${API_URL}/products`);
       if (!res.ok) {
-        throw new Error("Failed to fetch data");
+        throw new Error("Failed to fetch products from server");
       }
       const data = await res.json();
       setProducts(data);
-      console.log("Data fetched successfully:", data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,7 +50,7 @@ const Home = () => {
 
 const handleDelete = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/products/${id}`, {
+    const res = await fetch(`${API_URL}/products/${id}`, {
       method: "DELETE",
     });
     if (res.ok) {
@@ -60,17 +66,17 @@ const handleDelete = async (id) => {
     e.preventDefault();
     try {
       const res = await fetch(
-        "http://localhost:3000/products",
+        `${API_URL}/products`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-        name: formData.name,
-        price: Number(formData.price),
-        quantity: Number(formData.quantity),
-      }),
+            name: formData.name,
+            price: Number(formData.price),
+            quantity: Number(formData.quantity),
+          }),
         },
       );
 
@@ -87,7 +93,7 @@ const handleDelete = async (id) => {
   const handleUpdate = async (id, updatedData) => {
     try {
       const res = await fetch(
-        `http://localhost:3000/products/${id}`,
+        `${API_URL}/products/${id}`,
         {
           method: "PUT",
           headers: {
@@ -97,15 +103,15 @@ const handleDelete = async (id) => {
         }
       );
       if (res.ok) {
-      const updatedProduct = await res.json();
-            setProducts(
-              products.map((item) => (item.id === id ? updatedProduct : item))
-            );
-          }
-        } catch (error) {
-          console.error("Error updating product:", error);
-        }
-      };
+        const updatedProduct = await res.json();
+        setProducts(
+          products.map((item) => (item.id === id ? updatedProduct : item))
+        );
+      }
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center pt-16 px-6 pb-16 min-h-screen relative overflow-hidden">
@@ -129,6 +135,8 @@ const handleDelete = async (id) => {
       <Display
         activeSection={activeSection}
         members={products}
+        loading={loading}
+        error={error}
         handleDelete={handleDelete}
         handleUpdate={handleUpdate}
         formData={formData}
